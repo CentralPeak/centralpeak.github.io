@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Peak Capital</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="sidebar-toggle">☰ Menu</button>
+    
+    <div class="sidebar">
+        <button class="sidebar-close">×</button>
+        <h2 class="active" data-section="what-we-fund">What We Fund</h2>
+        <h2 data-section="how-we-work">How We Work</h2>
+        <h2 data-section="why-central-peak">Why Central Peak</h2>
+        <h2 data-section="who-should-reach-out">Who Should Reach Out</h2>
+        <h2 data-section="get-in-touch">Get in Touch</h2>
+    </div>
+
+    <main>
+        <h1>Central Peak Capital</h1>
+        
+        <p class="tagline">
+            <strong>Venture Capital for Builders, Hackers, and Researchers.</strong><br>
+            Early checks. Tactical support. Zero nonsense.
+        </p>
+
+        <section id="what-we-fund" class="active">
+            <p>
+                We invest in the infrastructure powering tomorrow's AI.<br>
+                We back vertical AI agents redefining industries.<br>
+                We support hardware that pushes the boundaries of what's possible.
+            </p>
+            <p>
+                Our sweet spot: founders with deep academic or research backgrounds-those who know how to turn breakthrough ideas into real-world impact.
+            </p>
+        </section>
+
+        <section id="how-we-work">
+            <p>
+                We write early checks.<br>
+                We don't just invest-we operate as your tactical partner.
+            </p>
+            <p><strong>Our support includes:</strong></p>
+            <ul>
+                <li>Fundraising strategy and investor outreach</li>
+                <li>Pitch deck and technical narrative refinement</li>
+                <li>Business model validation</li>
+                <li>Go-to-market planning</li>
+                <li>Due diligence and data room prep</li>
+                <li>Ongoing portfolio support</li>
+            </ul>
+            <p>
+                We're not here for vanity metrics. We're here to help you build, raise, and scale-fast.
+            </p>
+        </section>
+
+        <section id="why-central-peak">
+            <ul>
+                <li>We understand deep tech.</li>
+                <li>We value substance over hype.</li>
+                <li>We move quickly and communicate directly.</li>
+                <li>We're not afraid of complexity or technical risk.</li>
+                <li>We believe the best founders are often overlooked by traditional VCs.</li>
+            </ul>
+            <p>
+                We're not just another fund. We're your first call when you need capital, advice, or a reality check.
+            </p>
+        </section>
+
+        <section id="who-should-reach-out">
+            <ul>
+                <li>You're building core AI infrastructure, vertical AI agents, or next-gen hardware.</li>
+                <li>You have a strong technical or research background.</li>
+                <li>You want a partner who challenges you-and helps you win.</li>
+                <li>You value clear, honest feedback.</li>
+            </ul>
+        </section>
+
+        <section id="get-in-touch">
+            <p>
+                Ready to talk?<br>
+                <a href="mailto:hi@centralpeakcapital.com">hi@centralpeakcapital.com</a>
+            </p>
+        </section>
+
+        <footer>
+            <p>
+                <strong>Central Peak Capital</strong> @ 2025<br>
+                For hackers, builders, and researchers who don't fit the mold.
+            </p>
+        </footer>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebarClose = document.querySelector('.sidebar-close');
+        const sidebar = document.querySelector('.sidebar');
+        
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.add('open');
+        });
+
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(e.target) && 
+                !sidebarToggle.contains(e.target) &&
+                sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        // Section navigation
+        document.querySelectorAll('.sidebar h2').forEach(heading => {
+            heading.addEventListener('click', () => {
+                // Remove active class from all headings and sections
+                document.querySelectorAll('.sidebar h2').forEach(h => h.classList.remove('active'));
+                document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked heading and corresponding section
+                heading.classList.add('active');
+                const sectionId = heading.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+
+                // Close sidebar on mobile after selection
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
